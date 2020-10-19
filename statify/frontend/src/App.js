@@ -2,8 +2,7 @@ import React from 'react';
 import { 
   BrowserRouter as Router, 
   Switch, 
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Login from "./views/Login";
 import './App.css';
@@ -12,19 +11,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">About</Link>
-        </li>
         <Switch>
           <Route exact path="/">
             <Login />
           </Route>
           <Route path="/dashboard">
+            <h1>Dashboard</h1>
           </Route>
-          
         </Switch>
       </Router>
     </div>
