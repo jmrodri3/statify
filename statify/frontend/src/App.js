@@ -8,6 +8,8 @@ import Login from "./views/Login";
 import './App.css';
 
 function App() {
+  require('dotenv').config();
+
   return (
     <div className="App">
       <Router>

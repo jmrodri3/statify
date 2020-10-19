@@ -1,4 +1,5 @@
 import React from "react";
+import authorizeSpotify from "../providers/SpotifyApi";
 
 class Login extends React.Component {
     constructor(props) {
@@ -13,8 +14,10 @@ class Login extends React.Component {
     }
 
     login(event) {
-        alert('UserName: ' + this.state.userName + " " + this.state.password);
         event.preventDefault();
+        alert('UserName: ' + this.state.userName + " " + this.state.password);
+        let response = authorizeSpotify();
+        //alert("success");
     }
 
     render() {
@@ -24,12 +27,12 @@ class Login extends React.Component {
                 <form onSubmit={this.login}>
                     <label>
                         UserName:
-                        <input name="userName" onChange={(event) => this.setState({userName: event.target.value})}/>
+                        <input aria-label="Enter a username" name="userName" onChange={(event) => this.setState({userName: event.target.value})}/>
                     </label>
                     <br />
                     <label>
                         Password:
-                        <input name="password" onChange={(event) => this.setState({password: event.target.value})} />
+                        <input aria-label ="Enter a password" name="password" onChange={(event) => this.setState({password: event.target.value})} />
                     </label>
                     <br />
                     <input type="submit" value="Submit" />
