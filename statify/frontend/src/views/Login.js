@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 
 const serverUrl = process.env.REACT_APP_SERVER;
+const spotifyClientId = process.env.REACT_APP_CLIENT_ID;
 
 const instance = axios.create({
-    baseURL: serverUrl
+    baseURL: "http://" + serverUrl
 });
 
 class Login extends React.Component {
@@ -21,14 +22,24 @@ class Login extends React.Component {
 
     login(event) {
         event.preventDefault();
-        //alert("success");
-        instance.post('/registerUser/', {
-           name: this.state.name,
-           password: this.state.password
-        }).then(res => {
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
+        // instance.post('/registerUser/', {
+        //    name: this.state.name,
+        //    password: this.state.password
+        // }).then(res => {
+        //     console.log(res);
+        // }).catch(err => {
+        //     console.log(err);
+        // });
+
+        instance.get('/login/', (req, res) =>{
+        }).then(function(res){
+            var scopes = 'user-read-private user-read-email';
+            var redirect_uri = 'http://localhost:3000/dashboard'
+            window.open('https://accounts.spotify.com/authorize' +
+            '?response_type=code' +
+            '&client_id=' + spotifyClientId +
+            (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+            '&redirect_uri=' + encodeURIComponent(redirect_uri));
         });
     }
 
