@@ -5,7 +5,7 @@ const serverUrl = process.env.REACT_APP_SERVER;
 const spotifyClientId = process.env.REACT_APP_CLIENT_ID;
 
 const instance = axios.create({
-    baseURL: "http://" + serverUrl
+    baseURL: serverUrl
 });
 
 class Login extends React.Component {
