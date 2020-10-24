@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts', # Accounts app
-    'frontend', # Website
     'rest_framework',
     'corsheaders',
+    'statify.accounts', # Accounts app
+    'statify.frontend', # Website
 ]
 
 MIDDLEWARE = [
@@ -130,3 +130,6 @@ STATIC_URL = '/static/'
 
 # For development
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:3000',
+)

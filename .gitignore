@@ -2,3 +2,5 @@
 .env
 secret_settings.py
 *.pyc
+ngrok.exe
+launch.json

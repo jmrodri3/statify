@@ -1,5 +1,11 @@
 import React from "react";
-import authorizeSpotify from "../providers/SpotifyApi";
+import axios from "axios";
+
+const serverUrl = process.env.REACT_APP_SERVER;
+
+const instance = axios.create({
+    baseURL: serverUrl
+});
 
 class Login extends React.Component {
     constructor(props) {
@@ -15,9 +21,15 @@ class Login extends React.Component {
 
     login(event) {
         event.preventDefault();
-        alert('UserName: ' + this.state.userName + " " + this.state.password);
-        let response = authorizeSpotify();
         //alert("success");
+        instance.post('/registerUser/', {
+           name: this.state.name,
+           password: this.state.password
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     render() {
