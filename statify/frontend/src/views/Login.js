@@ -5,7 +5,7 @@ const serverUrl = process.env.REACT_APP_SERVER;
 const spotifyClientId = process.env.REACT_APP_CLIENT_ID;
 
 const instance = axios.create({
-    baseURL: "http://" + serverUrl
+    baseURL: serverUrl
 });
 
 class Login extends React.Component {
@@ -30,11 +30,12 @@ class Login extends React.Component {
         // }).catch(err => {
         //     console.log(err);
         // });
-
+        console.log("login started");
         instance.get('/login/', (req, res) =>{
         }).then(function(res){
             var scopes = 'user-read-private user-read-email';
-            var redirect_uri = 'http://localhost:3000/dashboard'
+            var redirect_uri = 'http://localhost:3000/dashboard';
+
             window.open('https://accounts.spotify.com/authorize' +
             '?response_type=code' +
             '&client_id=' + spotifyClientId +
